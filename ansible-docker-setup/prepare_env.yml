@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  vars_prompt:
+    - name: docker_user
+      prompt: "Enter the user to add to the Docker group (leave blank to skip)"
+      private: no
+    - name: start_on_boot
+      prompt: "Do you want Docker to start on boot? (yes/no)"
+      private: no
+      default: "yes"
+  roles:
+    - prepare_env
